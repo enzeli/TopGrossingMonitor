@@ -22,7 +22,7 @@
 		C3199A2D18EF1D6F001949B6 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = C3199A2B18EF1D6F001949B6 /* InfoPlist.strings */; };
 		C3199A2F18EF1D6F001949B6 /* TopGrossingMonitorTests.m in Sources */ = {isa = PBXBuildFile; fileRef = C3199A2E18EF1D6F001949B6 /* TopGrossingMonitorTests.m */; };
 		C3199A3A18EF29B7001949B6 /* FavDataManager.m in Sources */ = {isa = PBXBuildFile; fileRef = C3199A3918EF29B7001949B6 /* FavDataManager.m */; };
-		C3199A3D18EF2A74001949B6 /* TGRSSTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C3199A3C18EF2A74001949B6 /* TGRSSTableViewController.m */; };
+		C3199A3D18EF2A74001949B6 /* TGAppTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C3199A3C18EF2A74001949B6 /* TGAppTableViewController.m */; };
 		C3199A5218EF2B03001949B6 /* AFHTTPRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = C3199A4018EF2B03001949B6 /* AFHTTPRequestOperation.m */; };
 		C3199A5318EF2B03001949B6 /* AFHTTPRequestOperationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = C3199A4218EF2B03001949B6 /* AFHTTPRequestOperationManager.m */; };
 		C3199A5418EF2B03001949B6 /* AFHTTPSessionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = C3199A4418EF2B03001949B6 /* AFHTTPSessionManager.m */; };
@@ -32,7 +32,6 @@
 		C3199A5818EF2B03001949B6 /* AFURLRequestSerialization.m in Sources */ = {isa = PBXBuildFile; fileRef = C3199A4D18EF2B03001949B6 /* AFURLRequestSerialization.m */; };
 		C3199A5918EF2B03001949B6 /* AFURLResponseSerialization.m in Sources */ = {isa = PBXBuildFile; fileRef = C3199A4F18EF2B03001949B6 /* AFURLResponseSerialization.m */; };
 		C3199A5A18EF2B03001949B6 /* AFURLSessionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = C3199A5118EF2B03001949B6 /* AFURLSessionManager.m */; };
-		C3199A6218EF2D9A001949B6 /* TGFavTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C3199A6118EF2D9A001949B6 /* TGFavTableViewController.m */; };
 		C37FECC118EF82A700FB7E6E /* TGAppViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C37FECC018EF82A700FB7E6E /* TGAppViewController.m */; };
 		C37FECC718EF848200FB7E6E /* Drawers.png in Resources */ = {isa = PBXBuildFile; fileRef = C37FECC318EF848200FB7E6E /* Drawers.png */; };
 		C37FECC818EF848200FB7E6E /* Drawers@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C37FECC418EF848200FB7E6E /* Drawers@2x.png */; };
@@ -43,6 +42,8 @@
 		C37FECD018EF8D3E00FB7E6E /* IconPlaceholder.png in Resources */ = {isa = PBXBuildFile; fileRef = C37FECCF18EF8D3E00FB7E6E /* IconPlaceholder.png */; };
 		C37FECD318EFC6C200FB7E6E /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = C37FECD118EFC6C200FB7E6E /* Model.xcdatamodeld */; };
 		C37FECD918EFC72300FB7E6E /* App.m in Sources */ = {isa = PBXBuildFile; fileRef = C37FECD818EFC72300FB7E6E /* App.m */; };
+		C3E88FB918F3B08300FC8BB0 /* TGRSSAppTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C3E88FB818F3B08300FC8BB0 /* TGRSSAppTableViewController.m */; };
+		C3E88FBC18F3B37300FC8BB0 /* TGFavAppTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C3E88FBB18F3B37300FC8BB0 /* TGFavAppTableViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -76,8 +77,8 @@
 		C3199A2E18EF1D6F001949B6 /* TopGrossingMonitorTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TopGrossingMonitorTests.m; sourceTree = "<group>"; };
 		C3199A3818EF29B7001949B6 /* FavDataManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FavDataManager.h; sourceTree = "<group>"; };
 		C3199A3918EF29B7001949B6 /* FavDataManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FavDataManager.m; sourceTree = "<group>"; };
-		C3199A3B18EF2A74001949B6 /* TGRSSTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TGRSSTableViewController.h; sourceTree = "<group>"; };
-		C3199A3C18EF2A74001949B6 /* TGRSSTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TGRSSTableViewController.m; sourceTree = "<group>"; };
+		C3199A3B18EF2A74001949B6 /* TGAppTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TGAppTableViewController.h; sourceTree = "<group>"; };
+		C3199A3C18EF2A74001949B6 /* TGAppTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TGAppTableViewController.m; sourceTree = "<group>"; };
 		C3199A3F18EF2B03001949B6 /* AFHTTPRequestOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFHTTPRequestOperation.h; sourceTree = "<group>"; };
 		C3199A4018EF2B03001949B6 /* AFHTTPRequestOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFHTTPRequestOperation.m; sourceTree = "<group>"; };
 		C3199A4118EF2B03001949B6 /* AFHTTPRequestOperationManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFHTTPRequestOperationManager.h; sourceTree = "<group>"; };
@@ -97,8 +98,6 @@
 		C3199A4F18EF2B03001949B6 /* AFURLResponseSerialization.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFURLResponseSerialization.m; sourceTree = "<group>"; };
 		C3199A5018EF2B03001949B6 /* AFURLSessionManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFURLSessionManager.h; sourceTree = "<group>"; };
 		C3199A5118EF2B03001949B6 /* AFURLSessionManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFURLSessionManager.m; sourceTree = "<group>"; };
-		C3199A6018EF2D9A001949B6 /* TGFavTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TGFavTableViewController.h; sourceTree = "<group>"; };
-		C3199A6118EF2D9A001949B6 /* TGFavTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TGFavTableViewController.m; sourceTree = "<group>"; };
 		C37FECBF18EF82A700FB7E6E /* TGAppViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TGAppViewController.h; sourceTree = "<group>"; };
 		C37FECC018EF82A700FB7E6E /* TGAppViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TGAppViewController.m; sourceTree = "<group>"; };
 		C37FECC318EF848200FB7E6E /* Drawers.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Drawers.png; sourceTree = "<group>"; };
@@ -111,6 +110,10 @@
 		C37FECD218EFC6C200FB7E6E /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
 		C37FECD718EFC72300FB7E6E /* App.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = App.h; sourceTree = "<group>"; };
 		C37FECD818EFC72300FB7E6E /* App.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = App.m; sourceTree = "<group>"; };
+		C3E88FB718F3B08300FC8BB0 /* TGRSSAppTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TGRSSAppTableViewController.h; sourceTree = "<group>"; };
+		C3E88FB818F3B08300FC8BB0 /* TGRSSAppTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TGRSSAppTableViewController.m; sourceTree = "<group>"; };
+		C3E88FBA18F3B37300FC8BB0 /* TGFavAppTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TGFavAppTableViewController.h; sourceTree = "<group>"; };
+		C3E88FBB18F3B37300FC8BB0 /* TGFavAppTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TGFavAppTableViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -258,10 +261,12 @@
 		C3199A5F18EF2CA5001949B6 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
-				C3199A3B18EF2A74001949B6 /* TGRSSTableViewController.h */,
-				C3199A3C18EF2A74001949B6 /* TGRSSTableViewController.m */,
-				C3199A6018EF2D9A001949B6 /* TGFavTableViewController.h */,
-				C3199A6118EF2D9A001949B6 /* TGFavTableViewController.m */,
+				C3199A3B18EF2A74001949B6 /* TGAppTableViewController.h */,
+				C3199A3C18EF2A74001949B6 /* TGAppTableViewController.m */,
+				C3E88FB718F3B08300FC8BB0 /* TGRSSAppTableViewController.h */,
+				C3E88FB818F3B08300FC8BB0 /* TGRSSAppTableViewController.m */,
+				C3E88FBA18F3B37300FC8BB0 /* TGFavAppTableViewController.h */,
+				C3E88FBB18F3B37300FC8BB0 /* TGFavAppTableViewController.m */,
 				C37FECBF18EF82A700FB7E6E /* TGAppViewController.h */,
 				C37FECC018EF82A700FB7E6E /* TGAppViewController.m */,
 			);
@@ -384,21 +389,22 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C3199A6218EF2D9A001949B6 /* TGFavTableViewController.m in Sources */,
 				C3199A5718EF2B03001949B6 /* AFURLConnectionOperation.m in Sources */,
 				C37FECD918EFC72300FB7E6E /* App.m in Sources */,
+				C3E88FB918F3B08300FC8BB0 /* TGRSSAppTableViewController.m in Sources */,
 				C3199A5218EF2B03001949B6 /* AFHTTPRequestOperation.m in Sources */,
 				C3199A5518EF2B03001949B6 /* AFNetworkReachabilityManager.m in Sources */,
 				C3199A5A18EF2B03001949B6 /* AFURLSessionManager.m in Sources */,
 				C3199A5818EF2B03001949B6 /* AFURLRequestSerialization.m in Sources */,
 				C3199A5918EF2B03001949B6 /* AFURLResponseSerialization.m in Sources */,
-				C3199A3D18EF2A74001949B6 /* TGRSSTableViewController.m in Sources */,
+				C3199A3D18EF2A74001949B6 /* TGAppTableViewController.m in Sources */,
 				C3199A3A18EF29B7001949B6 /* FavDataManager.m in Sources */,
 				C3199A5318EF2B03001949B6 /* AFHTTPRequestOperationManager.m in Sources */,
 				C37FECC118EF82A700FB7E6E /* TGAppViewController.m in Sources */,
 				C37FECD318EFC6C200FB7E6E /* Model.xcdatamodeld in Sources */,
 				C3199A5618EF2B03001949B6 /* AFSecurityPolicy.m in Sources */,
 				C3199A0D18EF1D6F001949B6 /* main.m in Sources */,
+				C3E88FBC18F3B37300FC8BB0 /* TGFavAppTableViewController.m in Sources */,
 				C3199A1118EF1D6F001949B6 /* TGAppDelegate.m in Sources */,
 				C3199A5418EF2B03001949B6 /* AFHTTPSessionManager.m in Sources */,
 			);
@@ -542,6 +548,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "TopGrossingMonitor/TopGrossingMonitor-Prefix.pch";
 				INFOPLIST_FILE = "TopGrossingMonitor/TopGrossingMonitor-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				OTHER_LDFLAGS = (
 					"-ObjC",
 					"-all_load",
@@ -563,6 +570,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "TopGrossingMonitor/TopGrossingMonitor-Prefix.pch";
 				INFOPLIST_FILE = "TopGrossingMonitor/TopGrossingMonitor-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				OTHER_LDFLAGS = (
 					"-ObjC",
 					"-all_load",

@@ -7,8 +7,10 @@
 //
 
 #import "TGAppViewController.h"
+#import "TGFavAppTableViewController.h"
 #import "FavDataManager.h"
 #import "App.h"
+#import <SDWebImage/UIImageView+WebCache.h>
 @import CoreData;
 @import Social;
 
@@ -25,8 +27,6 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
-    self.title = self.data[@"im:name"][@"label"];
-    
     UIBarButtonItem *rightButton = [[UIBarButtonItem alloc] initWithTitle:@"Fav"
                                                                     style:UIBarButtonItemStyleDone
                                                                    target:self
@@ -34,16 +34,52 @@
 
     self.navigationItem.rightBarButtonItem = rightButton;
     
+    self.summaryView.editable = NO;
 }
 
--(void)viewWillAppear:(BOOL)animated
+- (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
-    self.isFav = [self isFavorited];
-    self.navigationItem.rightBarButtonItem.title = self.isFav ? @"Unfav" : @"Fav";
+    
+    [self reloadView];
+
 }
 
--(void)favButtonPressed:(id)sender{
+- (void)reloadView
+{
+    self.title = @"Detail";
+    self.isFav = [self isFavorited];
+    self.navigationItem.rightBarButtonItem.title = self.isFav ? @"Unfav" : @"Fav";
+    
+    // set icon image
+    NSURL *imageURL = [NSURL URLWithString:[self.data[@"im:image"] lastObject][@"label"]];
+    if (imageURL) {
+        [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:YES];
+        [self.imageView setImageWithURL:imageURL placeholderImage:[UIImage imageNamed:@"IconPlaceholder.png"]];
+        
+        [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
+    }
+    
+    // set title
+    if ( UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad )
+    {
+        self.title = self.data[@"im:name"][@"label"];
+    } else {
+        self.titleLabel.text = self.data[@"im:name"][@"label"];
+    }
+    
+    // set other labels
+    self.categoryLabel.text = self.data[@"category"][@"attributes"][@"label"];
+    
+    self.artistLabel.text = self.data[@"im:artist"][@"label"];
+    self.priceLabel.text = self.data[@"im:price"][@"label"];
+    self.releaseDateLabel.text = self.data[@"im:releaseDate"][@"attributes"][@"label"];
+    self.summaryView.text = self.data[@"summary"][@"label"];
+}
+
+
+
+- (void)favButtonPressed:(id)sender{
     
     FavDataManager *manager = [FavDataManager sharedInstance];
     NSManagedObjectContext *context = [manager mainObjectContext];
@@ -71,7 +107,6 @@
         self.navigationItem.rightBarButtonItem.title = @"Fav";
         
     } else {
-        
         App *app = [NSEntityDescription insertNewObjectForEntityForName:@"App"
                                                      inManagedObjectContext:context];
         
@@ -96,6 +131,23 @@
         self.isFav = YES;
         self.navigationItem.rightBarButtonItem.title =@"Unfav";
     }
+    
+    // reload fav table view vc if on ipad
+    if ( UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad )
+    {
+        id masterVC = self.splitViewController.viewControllers.firstObject;
+        if ([masterVC isKindOfClass:[UITabBarController class]]) {
+            UITabBarController *tabbarVC = (UITabBarController *) masterVC;
+            
+            if(tabbarVC.selectedIndex == 1){
+                id tableVC = ((UINavigationController *)tabbarVC.viewControllers[1]).viewControllers[0];
+                TGFavAppTableViewController * favTVC = (TGFavAppTableViewController *)tableVC;
+                [favTVC viewWillAppear:YES];
+            }
+            
+        }
+    }
+    
 }
 
 - (BOOL)isFavorited
@@ -124,7 +176,25 @@
     }
 }
 
+#pragma mark - go to app store
 
+- (IBAction)itunesButtonPressed:(id)sender {
+    // does not work on ios simulator
+    
+    NSString *urlString = self.data[@"link"][@"attributes"][@"href"];
+    NSLog(@"%@",urlString);
+    
+    urlString = [urlString stringByReplacingOccurrencesOfString:@"https://" withString:@"itms-apps://"];
+    NSLog(@"%@",urlString);
+    
+    NSURL *itunesURL = [NSURL URLWithString:urlString];
+    
+    if (itunesURL) {
+        [[UIApplication sharedApplication] openURL:itunesURL];
+    }
+                                                                              
+    
+}
 
 #pragma mark - share button actions
 - (IBAction)shareButtonPressed:(id)sender {
@@ -153,7 +223,9 @@
                 [self shareToEmail];
                 break;
             case 3:
-                [[UIPasteboard generalPasteboard] setString:self.data[@"id"][@"label"]];
+                if (self.data[@"id"][@"label"]) {
+                    [[UIPasteboard generalPasteboard] setString:self.data[@"id"][@"label"]];
+                }
                 break;
             default:
                 break;
@@ -244,26 +316,40 @@
 
 - (void)mailComposeController:(MFMailComposeViewController*)controller didFinishWithResult:(MFMailComposeResult)result error:(NSError*)error
 {
-    switch (result)
-    {
-        case MFMailComposeResultCancelled:
-            NSLog(@"Mail cancelled: you cancelled the operation and no email message was queued.");
-            break;
-        case MFMailComposeResultSaved:
-            NSLog(@"Mail saved: you saved the email message in the drafts folder.");
-            break;
-        case MFMailComposeResultSent:
-            NSLog(@"Mail send: the email message is queued in the outbox. It is ready to send.");
-            break;
-        case MFMailComposeResultFailed:
-            NSLog(@"Mail failed: the email message was not saved or queued, possibly due to an error.");
-            break;
-        default:
-            NSLog(@"Mail not sent.");
-            break;
-    }
     [self dismissViewControllerAnimated:YES completion:nil];
 }
+
+#pragma mark - UISplitViewControllerDelegate
+
+- (void)awakeFromNib
+{
+    self.splitViewController.delegate = self;
+}
+
+- (BOOL)splitViewController:(UISplitViewController *)svc
+   shouldHideViewController:(UIViewController *)vc
+              inOrientation:(UIInterfaceOrientation)orientation
+{
+    return NO;
+//    return UIInterfaceOrientationIsPortrait(orientation);
+}
+
+- (void)splitViewController:(UISplitViewController *)svc
+     willHideViewController:(UIViewController *)aViewController
+          withBarButtonItem:(UIBarButtonItem *)barButtonItem
+       forPopoverController:(UIPopoverController *)pc
+{
+    barButtonItem.title = aViewController.title;
+    self.navigationItem.leftBarButtonItem = barButtonItem;
+}
+
+- (void)splitViewController:(UISplitViewController *)svc
+     willShowViewController:(UIViewController *)aViewController
+  invalidatingBarButtonItem:(UIBarButtonItem *)barButtonItem
+{
+    self.navigationItem.leftBarButtonItem = nil;
+}
+
 
 /*
 #pragma mark - Navigation
