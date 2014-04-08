@@ -23,6 +23,7 @@
 {
     [super viewDidLoad];
     
+    // load dataSource from Core Data
     [self fetchFavourites];
     
 }
@@ -38,8 +39,6 @@
     
 }
 
-
-// fetch favourites from Core Data
 - (void)fetchFavourites{
     FavDataManager *manager = [FavDataManager sharedInstance];
     NSManagedObjectContext *context = [manager mainObjectContext];
@@ -56,7 +55,6 @@
     
     [self.tableView reloadData];
 }
-
 
 
 - (NSDictionary *)dataAtIndexPath:(NSIndexPath *)indexPath

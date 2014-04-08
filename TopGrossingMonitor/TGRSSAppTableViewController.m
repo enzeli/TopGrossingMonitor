@@ -8,6 +8,8 @@
 
 #import "TGRSSAppTableViewController.h"
 
+// number of app items fetched. should be no more than 300.
+#define NUM_APPS 25
 
 @interface TGRSSAppTableViewController ()
 
@@ -18,9 +20,16 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
-    NSString *requestString = @"http://ax.itunes.apple.com/WebObjects/MZStoreServices.woa/ws/RSS/topgrossingapplications/sf=143441/limit=25/json";
     
+    // Load dataSource from RSS feed
+    [self fetchRSSFeed];
+}
+
+- (void)fetchRSSFeed
+{
+    NSString *requestStringFormat = @"http://ax.itunes.apple.com/WebObjects/MZStoreServices.woa/ws/RSS/topgrossingapplications/sf=143441/limit=%d/json";
+    
+    NSString *requestString = [NSString stringWithFormat:requestStringFormat, NUM_APPS];
     NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:requestString]];
     
     NSURLSession *session = [NSURLSession sharedSession];
@@ -68,6 +77,8 @@
     [task resume];
     
 }
+
+
 
 - (NSDictionary *)dataAtIndexPath:(NSIndexPath *)indexPath
 {

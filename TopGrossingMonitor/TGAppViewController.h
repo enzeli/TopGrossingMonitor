@@ -5,6 +5,9 @@
 //  Created by Enze Li on 4/4/14.
 //  Copyright (c) 2014 Enze Li. All rights reserved.
 //
+//
+//  A simple view for display app detail information
+//
 
 #import <UIKit/UIKit.h>
 @import MessageUI;

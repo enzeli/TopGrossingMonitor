@@ -20,7 +20,6 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-
 }
 
 
@@ -76,8 +75,14 @@
         if ([segue.destinationViewController isKindOfClass:[TGAppViewController class]]){
             NSIndexPath *indexPath = [self.tableView indexPathForCell:sender];
             TGAppViewController *receiver = (TGAppViewController *)segue.destinationViewController;
-            receiver.data = [self dataAtIndexPath:indexPath];
-
+            NSDictionary *celldata = [self dataAtIndexPath:indexPath];
+            if (celldata) {
+                receiver.data = celldata;
+            } else {
+                UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Oops" message:@"Data not found. Refresh Table View" delegate:self cancelButtonTitle:@"Refresh" otherButtonTitles:nil];
+                [alertView show];
+            }
+            
             [self.tableView deselectRowAtIndexPath:indexPath animated:NO];
         }
     }
@@ -103,5 +108,8 @@
     
     [self.tableView deselectRowAtIndexPath:indexPath animated:NO];
 }
+
+# pragma mark - Alert View delegate
+
 
 @end

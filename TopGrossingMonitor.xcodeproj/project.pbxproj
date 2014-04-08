@@ -48,6 +48,7 @@
 		C3E88FE618F4488F00FC8BB0 /* UIImage+MultiFormat.m in Sources */ = {isa = PBXBuildFile; fileRef = C3E88FD618F4488F00FC8BB0 /* UIImage+MultiFormat.m */; };
 		C3E88FE718F4488F00FC8BB0 /* UIImage+WebP.m in Sources */ = {isa = PBXBuildFile; fileRef = C3E88FD818F4488F00FC8BB0 /* UIImage+WebP.m */; };
 		C3E88FE818F4488F00FC8BB0 /* UIImageView+WebCache.m in Sources */ = {isa = PBXBuildFile; fileRef = C3E88FDA18F4488F00FC8BB0 /* UIImageView+WebCache.m */; };
+		C3E88FEA18F4733A00FC8BB0 /* Welcome.png in Resources */ = {isa = PBXBuildFile; fileRef = C3E88FE918F4733A00FC8BB0 /* Welcome.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -127,6 +128,7 @@
 		C3E88FD818F4488F00FC8BB0 /* UIImage+WebP.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+WebP.m"; sourceTree = "<group>"; };
 		C3E88FD918F4488F00FC8BB0 /* UIImageView+WebCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImageView+WebCache.h"; sourceTree = "<group>"; };
 		C3E88FDA18F4488F00FC8BB0 /* UIImageView+WebCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImageView+WebCache.m"; sourceTree = "<group>"; };
+		C3E88FE918F4733A00FC8BB0 /* Welcome.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Welcome.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -194,9 +196,9 @@
 				C3199A1518EF1D6F001949B6 /* Main_iPad.storyboard */,
 				C3199A5F18EF2CA5001949B6 /* ViewControllers */,
 				C3199A5E18EF2C93001949B6 /* CoreData */,
+				C3E88FBD18F4488F00FC8BB0 /* SDWebImage */,
 				C37FECC218EF846B00FB7E6E /* Images */,
 				C3199A1B18EF1D6F001949B6 /* Images.xcassets */,
-				C3E88FBD18F4488F00FC8BB0 /* SDWebImage */,
 				C3199A0718EF1D6F001949B6 /* Supporting Files */,
 			);
 			path = TopGrossingMonitor;
@@ -262,6 +264,7 @@
 			isa = PBXGroup;
 			children = (
 				C37FECCF18EF8D3E00FB7E6E /* IconPlaceholder.png */,
+				C3E88FE918F4733A00FC8BB0 /* Welcome.png */,
 				C37FECC318EF848200FB7E6E /* Drawers.png */,
 				C37FECC418EF848200FB7E6E /* Drawers@2x.png */,
 				C37FECC518EF848200FB7E6E /* Favorites.png */,
@@ -385,6 +388,7 @@
 			files = (
 				C37FECCA18EF848200FB7E6E /* Favorites@2x.png in Resources */,
 				C37FECC718EF848200FB7E6E /* Drawers.png in Resources */,
+				C3E88FEA18F4733A00FC8BB0 /* Welcome.png in Resources */,
 				C37FECD018EF8D3E00FB7E6E /* IconPlaceholder.png in Resources */,
 				C3199A1718EF1D6F001949B6 /* Main_iPad.storyboard in Resources */,
 				C3199A1C18EF1D6F001949B6 /* Images.xcassets in Resources */,

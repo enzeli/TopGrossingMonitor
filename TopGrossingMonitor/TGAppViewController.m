@@ -17,6 +17,7 @@
 @interface TGAppViewController ()
 
 @property (assign) BOOL isFav;
+@property (strong, nonatomic) UIImageView *welcomeImageView;
 
 @end
 
@@ -31,35 +32,47 @@
                                                                     style:UIBarButtonItemStyleDone
                                                                    target:self
                                                                    action:@selector(favButtonPressed:)];
-
     self.navigationItem.rightBarButtonItem = rightButton;
     
+    // disable summary text view editing
     self.summaryView.editable = NO;
 }
 
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
-    
     [self reloadView];
-
 }
+
+
+/*
+ Update outlets according to data
+ */
 
 - (void)reloadView
 {
+    // hide button if there is no data (for initial displaying on iPad splitview)
     if (self.data) {
         self.shareButton.hidden = NO;
         self.appStoreButton.hidden = NO;
+        [self.welcomeImageView removeFromSuperview];
     } else {
         self.shareButton.hidden = YES;
         self.appStoreButton.hidden = YES;
+        
+        UIImage *welcomeImage = [UIImage imageNamed:@"Welcome.png"];
+        self.welcomeImageView = [[UIImageView alloc]initWithImage:welcomeImage];
+        self.welcomeImageView.center = CGPointMake(self.view.frame.size.width / 2.0,
+                                                   self.view.frame.size.height / 2.0);
+        [self.view addSubview:self.welcomeImageView];
+        
     }
     
     self.title = @"Detail";
     self.isFav = [self isFavorited];
     self.navigationItem.rightBarButtonItem.title = self.isFav ? @"Unfav" : @"Fav";
     
-    // set icon image
+    // load icon image
     NSURL *imageURL = [NSURL URLWithString:[self.data[@"im:image"] lastObject][@"label"]];
     if (imageURL) {
         [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:YES];
@@ -68,7 +81,7 @@
         [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
     }
     
-    // set title
+    // set title / titleLabel
     if ( UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad )
     {
         self.title = self.data[@"im:name"][@"label"];
@@ -78,15 +91,30 @@
     
     // set other labels
     self.categoryLabel.text = self.data[@"category"][@"attributes"][@"label"];
-    
     self.artistLabel.text = self.data[@"im:artist"][@"label"];
     self.priceLabel.text = self.data[@"im:price"][@"label"];
     self.releaseDateLabel.text = self.data[@"im:releaseDate"][@"attributes"][@"label"];
     self.summaryView.text = self.data[@"summary"][@"label"];
+    
+//    [self autolayout];
 }
 
 
+// autolayout programmatically if necessary
+//- (void)autolayout
+//{
+//    NSLayoutConstraint *rightContraint = [NSLayoutConstraint constraintWithItem:self.summaryView
+//                                                                      attribute:NSLayoutAttributeRight
+//                                                                      relatedBy:NSLayoutRelationEqual
+//                                                                         toItem:self.view
+//                                                                      attribute:NSLayoutAttributeRight
+//                                                                     multiplier:1.0
+//                                                                       constant:-20.0];
+//    [self.view addConstraint:rightContraint];
+//}
 
+
+#pragma mark - Fav Button Actions
 - (void)favButtonPressed:(id)sender{
     
     FavDataManager *manager = [FavDataManager sharedInstance];
@@ -109,8 +137,6 @@
         }
         
         [manager save];
-        
-//        NSLog(@"Deleted fav");
         self.isFav = NO;
         self.navigationItem.rightBarButtonItem.title = @"Fav";
         
@@ -133,8 +159,6 @@
         }
 
         [manager save];
-
-//        NSLog(@"Added fav");
         
         self.isFav = YES;
         self.navigationItem.rightBarButtonItem.title =@"Unfav";
@@ -143,23 +167,26 @@
     // reload fav table view if on ipad
     if ( UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad )
     {
-        id masterVC = self.splitViewController.viewControllers.firstObject;
-        if ([masterVC isKindOfClass:[UITabBarController class]]) {
-            
-            UITabBarController *tabbarVC = (UITabBarController *) masterVC;
-            if(tabbarVC.selectedIndex == 1){
-                
-                id tableVC = ((UINavigationController *)tabbarVC.viewControllers[1]).viewControllers[0];
-                if ([tabbarVC isKindOfClass:[TGFavAppTableViewController class]]) {
-                    
-                    TGFavAppTableViewController * favTVC = (TGFavAppTableViewController *)tableVC;
-                    [favTVC viewWillAppear:YES];
-                }
-            }
-            
-        }
+        [self reloadFavTableView];
     }
     
+}
+
+- (void)reloadFavTableView{
+    id masterVC = self.splitViewController.viewControllers.firstObject;
+    if ([masterVC isKindOfClass:[UITabBarController class]]) {
+        
+        UITabBarController *tabbarVC = (UITabBarController *) masterVC;
+        if(tabbarVC.selectedIndex == 1){
+            
+            id tableVC = ((UINavigationController *)(tabbarVC.viewControllers[1])).viewControllers[0];
+            if ([tableVC isKindOfClass:[TGFavAppTableViewController class]]) {
+                
+                TGFavAppTableViewController * favTVC = (TGFavAppTableViewController *)tableVC;
+                [favTVC viewWillAppear:YES];
+            }
+        }
+    }
 }
 
 - (BOOL)isFavorited
@@ -187,8 +214,7 @@
     }
 }
 
-#pragma mark - go to app store
-
+#pragma mark - app store button actions
 // does not work on ios simulator due to forbidden service
 - (IBAction)itunesButtonPressed:(id)sender {
     NSString *urlString = self.data[@"link"][@"attributes"][@"href"];
@@ -329,8 +355,8 @@
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 
-#pragma mark - UISplitViewControllerDelegate
 
+#pragma mark - UISplitViewControllerDelegate
 - (void)awakeFromNib
 {
     self.splitViewController.delegate = self;
@@ -341,24 +367,8 @@
               inOrientation:(UIInterfaceOrientation)orientation
 {
     return NO;
-//    return UIInterfaceOrientationIsPortrait(orientation);
 }
 
-- (void)splitViewController:(UISplitViewController *)svc
-     willHideViewController:(UIViewController *)aViewController
-          withBarButtonItem:(UIBarButtonItem *)barButtonItem
-       forPopoverController:(UIPopoverController *)pc
-{
-    barButtonItem.title = aViewController.title;
-    self.navigationItem.leftBarButtonItem = barButtonItem;
-}
-
-- (void)splitViewController:(UISplitViewController *)svc
-     willShowViewController:(UIViewController *)aViewController
-  invalidatingBarButtonItem:(UIBarButtonItem *)barButtonItem
-{
-    self.navigationItem.leftBarButtonItem = nil;
-}
 
 
 /*
