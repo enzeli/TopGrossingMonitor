@@ -7,8 +7,6 @@
 //
 
 #import "TGRSSAppTableViewController.h"
-#import "AFNetworking.h"
-
 
 
 @interface TGRSSAppTableViewController ()
@@ -23,25 +21,51 @@
     // Do any additional setup after loading the view.
     NSString *requestString = @"http://ax.itunes.apple.com/WebObjects/MZStoreServices.woa/ws/RSS/topgrossingapplications/sf=143441/limit=25/json";
     
-    AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+    NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:requestString]];
+    
+    NSURLSession *session = [NSURLSession sharedSession];
+    NSURLSessionDataTask *task = [session dataTaskWithRequest:request
+                                            completionHandler:
+                                  ^(NSData *data, NSURLResponse *response, NSError *error) {
+                                      
+                                      // stop indicator first
+                                      [self.activityIndicator stopAnimating];
+                                      [self.activityIndicator removeFromSuperview];
+                                      [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
+                                      
+                                      // request unsuccessful
+                                      if (error) {
+                                          NSLog(@"HTTP request error: %@", error);
+                                          UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Oops"
+                                                                                              message:@"Connection failed. Check your network settings."
+                                                                                             delegate:nil
+                                                                                    cancelButtonTitle:@"OK"
+                                                                                    otherButtonTitles:nil];
+                                          [alertView show];
+                                          
+                                      }
+                                      
+                                      // request complete
+                                      else {
+                                          id jsondata = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:&error];
+                                          
+                                          if (jsondata[@"feed"][@"entry"]) {
+                                              if ([jsondata[@"feed"][@"entry"] isKindOfClass:[NSArray class]]) {
+                                                  self.dataSource = jsondata[@"feed"][@"entry"];
+                                                  [self.tableView reloadData];
+                                              }
+                                          } else {
+                                              NSLog(@"JSONSerialization error: %@", error);
+                                          }
+                                      }
+                                      
+
+                                  }];
+    
+    
     [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:YES];
     [self.activityIndicator startAnimating];
-    
-    
-    [manager GET:requestString parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
-        self.dataSource = responseObject[@"feed"][@"entry"];
-        [self.tableView reloadData];
-        [self.activityIndicator stopAnimating];
-        [self.activityIndicator removeFromSuperview];
-        [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
-        
-    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-        NSLog(@"Error: %@", error);
-        
-        [self.activityIndicator stopAnimating];
-        [self.activityIndicator removeFromSuperview];
-        [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
-    }];
+    [task resume];
     
 }
 

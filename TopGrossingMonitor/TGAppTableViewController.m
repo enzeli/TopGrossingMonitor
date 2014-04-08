@@ -8,7 +8,7 @@
 
 #import "TGAppTableViewController.h"
 #import "TGAppViewController.h"
-#import <SDWebImage/UIImageView+WebCache.h>
+#import "UIImageView+WebCache.h"
 
 @interface TGAppTableViewController ()
 
@@ -51,7 +51,6 @@
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"AppCell" forIndexPath:indexPath];
     
     // Configure the cell...
-//    NSDictionary *celldata = self.dataSource[indexPath.row];
     NSDictionary *celldata = [self dataAtIndexPath:indexPath];
     
     cell.textLabel.text = celldata[@"im:name"][@"label"];
@@ -96,10 +95,7 @@
             if ([detailvc isKindOfClass:[TGAppViewController class]]){
                 TGAppViewController *receiver = (TGAppViewController *)detailvc;
                 receiver.data = [self dataAtIndexPath:indexPath];
-                
                 [receiver reloadView];
-                
-                
             }
 
         }

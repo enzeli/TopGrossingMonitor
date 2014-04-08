@@ -9,13 +9,12 @@
 #import <UIKit/UIKit.h>
 
 // A generic class for displaying app in tabelview
-// Sub class should override |viewDidLoad| for loading dataSource
-//      and |dataAtIndexPath:| for setting cell
+// Subclasses should override |viewDidLoad| for loading dataSource
+//                   and |dataAtIndexPath:| for providing data points
+
 
 @interface TGAppTableViewController : UITableViewController
 
 @property (strong, nonatomic) NSArray *dataSource;
-
-
 
 @end

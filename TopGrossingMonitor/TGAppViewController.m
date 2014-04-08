@@ -10,7 +10,7 @@
 #import "TGFavAppTableViewController.h"
 #import "FavDataManager.h"
 #import "App.h"
-#import <SDWebImage/UIImageView+WebCache.h>
+#import "UIImageView+WebCache.h"
 @import CoreData;
 @import Social;
 
@@ -25,8 +25,8 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
     
+    // Add fav button on Navigation bar
     UIBarButtonItem *rightButton = [[UIBarButtonItem alloc] initWithTitle:@"Fav"
                                                                     style:UIBarButtonItemStyleDone
                                                                    target:self
@@ -47,6 +47,14 @@
 
 - (void)reloadView
 {
+    if (self.data) {
+        self.shareButton.hidden = NO;
+        self.appStoreButton.hidden = NO;
+    } else {
+        self.shareButton.hidden = YES;
+        self.appStoreButton.hidden = YES;
+    }
+    
     self.title = @"Detail";
     self.isFav = [self isFavorited];
     self.navigationItem.rightBarButtonItem.title = self.isFav ? @"Unfav" : @"Fav";
@@ -102,7 +110,7 @@
         
         [manager save];
         
-        NSLog(@"Deleted fav");
+//        NSLog(@"Deleted fav");
         self.isFav = NO;
         self.navigationItem.rightBarButtonItem.title = @"Fav";
         
@@ -126,23 +134,27 @@
 
         [manager save];
 
-        NSLog(@"Added fav");
+//        NSLog(@"Added fav");
         
         self.isFav = YES;
         self.navigationItem.rightBarButtonItem.title =@"Unfav";
     }
     
-    // reload fav table view vc if on ipad
+    // reload fav table view if on ipad
     if ( UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad )
     {
         id masterVC = self.splitViewController.viewControllers.firstObject;
         if ([masterVC isKindOfClass:[UITabBarController class]]) {
-            UITabBarController *tabbarVC = (UITabBarController *) masterVC;
             
+            UITabBarController *tabbarVC = (UITabBarController *) masterVC;
             if(tabbarVC.selectedIndex == 1){
+                
                 id tableVC = ((UINavigationController *)tabbarVC.viewControllers[1]).viewControllers[0];
-                TGFavAppTableViewController * favTVC = (TGFavAppTableViewController *)tableVC;
-                [favTVC viewWillAppear:YES];
+                if ([tabbarVC isKindOfClass:[TGFavAppTableViewController class]]) {
+                    
+                    TGFavAppTableViewController * favTVC = (TGFavAppTableViewController *)tableVC;
+                    [favTVC viewWillAppear:YES];
+                }
             }
             
         }
@@ -167,7 +179,6 @@
     
     if ([results count] >= 1) {
         if ([results count] > 1){
-            // TODO: deal with it later
             NSLog(@"Waring: found duplicate fav records");
         }
         return YES;
@@ -178,9 +189,8 @@
 
 #pragma mark - go to app store
 
+// does not work on ios simulator due to forbidden service
 - (IBAction)itunesButtonPressed:(id)sender {
-    // does not work on ios simulator
-    
     NSString *urlString = self.data[@"link"][@"attributes"][@"href"];
     NSLog(@"%@",urlString);
     

@@ -57,6 +57,7 @@ NSString * const kDataManagerSQLiteName = @"GoPlacesPro.sqlite";
 		return _objectModel;
     
 	NSBundle *bundle = [NSBundle mainBundle];
+    
 //	if (kDataManagerBundleName) {
 //		NSString *bundlePath = [bundle pathForResource:kDataManagerBundleName ofType:@"bundle"];
 //        NSLog(@"bundle path: %@", bundlePath);
@@ -64,8 +65,8 @@ NSString * const kDataManagerSQLiteName = @"GoPlacesPro.sqlite";
 //        
 //		bundle = [NSBundle bundleWithPath:bundlePath];
 //	}
+    
 	NSString *modelPath = [bundle pathForResource:kDataManagerModelName ofType:@"momd"];
-//    NSLog(@"model path: %@", modelPath);
 	_objectModel = [[NSManagedObjectModel alloc] initWithContentsOfURL:[NSURL fileURLWithPath:modelPath]];
     
 	return _objectModel;
@@ -145,8 +146,6 @@ NSString * const kDataManagerSQLiteName = @"GoPlacesPro.sqlite";
 	// Compose a path to the <Library>/Database directory
 	NSString *libraryPath = [NSSearchPathForDirectoriesInDomains(NSLibraryDirectory, NSUserDomainMask, YES) objectAtIndex:0] ;
 	SharedDocumentsPath = [libraryPath stringByAppendingPathComponent:@"Database"];
-    
-//    NSLog(@"SharedDocumentsPath: %@", SharedDocumentsPath);
     
 	// Ensure the database directory exists
 	NSFileManager *manager = [NSFileManager defaultManager];

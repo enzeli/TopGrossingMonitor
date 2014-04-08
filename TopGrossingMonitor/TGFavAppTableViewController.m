@@ -30,13 +30,16 @@
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
-    // reload if favourites has updated
+    
+    // reload data only if favourites has updated
     if ([[FavDataManager sharedInstance] hasUpdated]){
         [self fetchFavourites];
     }
     
 }
 
+
+// fetch favourites from Core Data
 - (void)fetchFavourites{
     FavDataManager *manager = [FavDataManager sharedInstance];
     NSManagedObjectContext *context = [manager mainObjectContext];
@@ -53,6 +56,8 @@
     
     [self.tableView reloadData];
 }
+
+
 
 - (NSDictionary *)dataAtIndexPath:(NSIndexPath *)indexPath
 {

@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="5053" systemVersion="13C64" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="8RY-FE-boZ">
     <dependencies>
+        <deployment defaultVersion="1792" identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3733"/>
     </dependencies>
     <scenes>
@@ -81,8 +82,8 @@
             <objects>
                 <viewController id="mrb-Ge-qTD" customClass="TGAppViewController" sceneMemberID="viewController">
                     <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="4c4-wA-EEc"/>
-                        <viewControllerLayoutGuide type="bottom" id="DcZ-0p-6Ma"/>
+                        <viewControllerLayoutGuide type="top" id="okE-1z-mTb"/>
+                        <viewControllerLayoutGuide type="bottom" id="URc-oR-DaG"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="UxZ-4d-5NN">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
@@ -106,7 +107,7 @@
                                 <rect key="frame" x="20" y="102" width="100" height="100"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ogv-m3-K1y">
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ogv-m3-K1y">
                                 <rect key="frame" x="20" y="248" width="280" height="270"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
@@ -151,12 +152,6 @@
                             </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-                        <constraints>
-                            <constraint firstItem="ogv-m3-K1y" firstAttribute="top" secondItem="UxZ-4d-5NN" secondAttribute="top" constant="248" id="Pyb-4o-8MA"/>
-                            <constraint firstItem="ogv-m3-K1y" firstAttribute="leading" secondItem="UxZ-4d-5NN" secondAttribute="leading" constant="20" id="gBn-J2-1CH"/>
-                            <constraint firstAttribute="trailing" secondItem="ogv-m3-K1y" secondAttribute="trailing" constant="20" id="qIZ-SM-O4U"/>
-                            <constraint firstAttribute="bottom" secondItem="ogv-m3-K1y" secondAttribute="bottom" constant="50" id="zF9-6B-Rn6"/>
-                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Fav Detail" id="xRg-Lj-gfe"/>
                     <connections>
@@ -171,7 +166,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tB6-PK-Y8t" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1756" y="293"/>
+            <point key="canvasLocation" x="1628" y="423"/>
         </scene>
         <!--Navigation Controller - Favourites-->
         <scene sceneID="Xpn-Zb-aYh">
@@ -262,8 +257,8 @@
             <objects>
                 <viewController id="1Jj-cd-Bng" customClass="TGAppViewController" sceneMemberID="viewController">
                     <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="Jch-HZ-25E"/>
-                        <viewControllerLayoutGuide type="bottom" id="jrc-Zj-5fa"/>
+                        <viewControllerLayoutGuide type="top" id="kVx-0a-aGk"/>
+                        <viewControllerLayoutGuide type="bottom" id="8WY-SC-zX0"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="dEh-B2-nrY">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
@@ -287,7 +282,7 @@
                                 <rect key="frame" x="20" y="102" width="100" height="100"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pdG-K5-BxO">
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="pdG-K5-BxO">
                                 <rect key="frame" x="20" y="248" width="280" height="270"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
@@ -332,27 +327,23 @@
                             </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-                        <constraints>
-                            <constraint firstItem="pdG-K5-BxO" firstAttribute="leading" secondItem="dEh-B2-nrY" secondAttribute="leading" constant="20" id="I1P-SK-AYx"/>
-                            <constraint firstItem="pdG-K5-BxO" firstAttribute="top" secondItem="dEh-B2-nrY" secondAttribute="top" constant="248" id="NuY-Kb-eNQ"/>
-                            <constraint firstAttribute="bottom" secondItem="pdG-K5-BxO" secondAttribute="bottom" constant="50" id="lpV-Kg-uqb"/>
-                            <constraint firstAttribute="trailing" secondItem="pdG-K5-BxO" secondAttribute="trailing" constant="20" id="t5G-zS-Pg8"/>
-                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Detail" id="hAz-Cg-e9s"/>
                     <connections>
+                        <outlet property="appStoreButton" destination="al2-GW-kq8" id="RbP-fA-8qu"/>
                         <outlet property="artistLabel" destination="KC0-n2-bqb" id="hwT-ek-NXO"/>
                         <outlet property="categoryLabel" destination="CEn-nR-3EK" id="hYp-xC-PuF"/>
                         <outlet property="imageView" destination="rWq-uK-dA0" id="SVv-H7-DbT"/>
                         <outlet property="priceLabel" destination="zMo-pD-UrZ" id="utR-n3-aLq"/>
                         <outlet property="releaseDateLabel" destination="8UM-0X-rQ1" id="3db-wz-kUA"/>
+                        <outlet property="shareButton" destination="RMd-Gh-ZiA" id="Fcy-tT-olg"/>
                         <outlet property="summaryView" destination="pdG-K5-BxO" id="Op7-7a-SR4"/>
                         <outlet property="titleLabel" destination="szC-Ep-0ea" id="VeJ-au-RPp"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Xbn-oZ-eo3" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1772" y="-401"/>
+            <point key="canvasLocation" x="1660" y="-334"/>
         </scene>
     </scenes>
     <resources>

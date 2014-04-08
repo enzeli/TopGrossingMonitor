@@ -20,7 +20,10 @@
 @property (weak, nonatomic) IBOutlet UILabel *priceLabel;
 @property (weak, nonatomic) IBOutlet UILabel *releaseDateLabel;
 @property (weak, nonatomic) IBOutlet UITextView *summaryView;
+@property (weak, nonatomic) IBOutlet UIButton *shareButton;
+@property (weak, nonatomic) IBOutlet UIButton *appStoreButton;
 
-- (void)reloadView; // reload view according to data
+// reload view when data is updated
+- (void)reloadView;
 
 @end

@@ -32,7 +32,7 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yhE-0O-l8B">
-                                <rect key="frame" x="20" y="270" width="40" height="30"/>
+                                <rect key="frame" x="38" y="270" width="40" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Share">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -99,11 +99,13 @@
                     <toolbarItems/>
                     <navigationItem key="navigationItem" title="Detail" id="EBy-Rl-K8h"/>
                     <connections>
+                        <outlet property="appStoreButton" destination="XJ6-pI-JcU" id="amA-QS-op3"/>
                         <outlet property="artistLabel" destination="0Xb-Ve-g4u" id="xQa-ne-WhK"/>
                         <outlet property="categoryLabel" destination="TLY-48-2RS" id="8Mg-pd-smP"/>
                         <outlet property="imageView" destination="W9O-Lq-kxq" id="xyM-EI-1tD"/>
                         <outlet property="priceLabel" destination="elb-cT-eN1" id="gt0-a6-hjG"/>
                         <outlet property="releaseDateLabel" destination="MSS-Jo-3xy" id="WWQ-o1-INN"/>
+                        <outlet property="shareButton" destination="yhE-0O-l8B" id="Lsa-y0-7rI"/>
                         <outlet property="summaryView" destination="a41-6I-rAi" id="8WE-fk-Zh6"/>
                     </connections>
                 </viewController>
