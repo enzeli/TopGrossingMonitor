@@ -3,7 +3,7 @@ TopGrossingMonitor
 
 Key Features
 - Fetch designated RSS feed and display in tableview.
-- Store favourites in Core Data, managed by Singleton FavDataManager class. ( Modified version of [here](http://nachbaur.com/blog/smarter-core-data) )
+- Store favourites in Core Data, managed by a Singleton FavDataManager. ( Improved version of [this nice article](http://nachbaur.com/blog/smarter-core-data) )
 - Universal app supporting both landscape and portrait orientation on iPad.
 
 External Resources Used
@@ -16,6 +16,6 @@ Known problems
 
 Potential future Work
 - App Detail View is underdesigned.
-- Handle long string displaying in labels
+- Long name strings should be handled properly in labels
 - Adding more transition animation could make UX more friendly, especially on iPad.
 - Expand Core Data functionality. Currently images are not stored, and data is store in unstructured raw form.

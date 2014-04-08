@@ -96,7 +96,7 @@
     self.releaseDateLabel.text = self.data[@"im:releaseDate"][@"attributes"][@"label"];
     self.summaryView.text = self.data[@"summary"][@"label"];
     
-//    [self autolayout];
+    //[self autolayout];
 }
 
 
@@ -161,7 +161,7 @@
         [manager save];
         
         self.isFav = YES;
-        self.navigationItem.rightBarButtonItem.title =@"Unfav";
+        self.navigationItem.rightBarButtonItem.title = @"Unfav";
     }
     
     // reload fav table view if on ipad
@@ -177,9 +177,10 @@
     if ([masterVC isKindOfClass:[UITabBarController class]]) {
         
         UITabBarController *tabbarVC = (UITabBarController *) masterVC;
-        if(tabbarVC.selectedIndex == 1){
+        if(tabbarVC.selectedIndex == 1 && [[tabbarVC.viewControllers lastObject] isKindOfClass:[UINavigationController class]]){
             
-            id tableVC = ((UINavigationController *)(tabbarVC.viewControllers[1])).viewControllers[0];
+            UINavigationController *naviController = (UINavigationController *) [tabbarVC.viewControllers lastObject] ;
+            id tableVC = [naviController.viewControllers lastObject];
             if ([tableVC isKindOfClass:[TGFavAppTableViewController class]]) {
                 
                 TGFavAppTableViewController * favTVC = (TGFavAppTableViewController *)tableVC;
@@ -368,18 +369,5 @@
 {
     return NO;
 }
-
-
-
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
-{
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 @end

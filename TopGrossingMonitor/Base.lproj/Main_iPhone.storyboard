@@ -95,6 +95,9 @@
                                 <state key="normal" title="Share">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <action selector="shareButtonPressed:" destination="mrb-Ge-qTD" eventType="touchUpInside" id="bA3-ih-8ie"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cyb-cA-zjJ">
                                 <rect key="frame" x="139" y="210" width="112" height="30"/>
@@ -102,6 +105,9 @@
                                 <state key="normal" title="Go to App Store">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <action selector="itunesButtonPressed:" destination="mrb-Ge-qTD" eventType="touchUpInside" id="B5o-zh-aKn"/>
+                                </connections>
                             </button>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="hNJ-Sd-d63">
                                 <rect key="frame" x="20" y="102" width="100" height="100"/>
@@ -270,6 +276,9 @@
                                 <state key="normal" title="Share">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <action selector="shareButtonPressed:" destination="1Jj-cd-Bng" eventType="touchUpInside" id="xpO-Km-nlf"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="al2-GW-kq8">
                                 <rect key="frame" x="139" y="210" width="112" height="30"/>
@@ -277,6 +286,9 @@
                                 <state key="normal" title="Go to App Store">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <action selector="itunesButtonPressed:" destination="1Jj-cd-Bng" eventType="touchUpInside" id="Z0H-PO-Tk6"/>
+                                </connections>
                             </button>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="rWq-uK-dA0">
                                 <rect key="frame" x="20" y="102" width="100" height="100"/>
@@ -343,7 +355,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Xbn-oZ-eo3" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1660" y="-334"/>
+            <point key="canvasLocation" x="1622" y="-339"/>
         </scene>
     </scenes>
     <resources>

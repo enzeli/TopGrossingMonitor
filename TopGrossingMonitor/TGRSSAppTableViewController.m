@@ -17,14 +17,12 @@
 
 @implementation TGRSSAppTableViewController
 
-- (void)viewDidLoad
+- (void)loadData
 {
-    [super viewDidLoad];
-    
-    // Load dataSource from RSS feed
     [self fetchRSSFeed];
 }
 
+// Load dataSource from RSS feed
 - (void)fetchRSSFeed
 {
     NSString *requestStringFormat = @"http://ax.itunes.apple.com/WebObjects/MZStoreServices.woa/ws/RSS/topgrossingapplications/sf=143441/limit=%d/json";

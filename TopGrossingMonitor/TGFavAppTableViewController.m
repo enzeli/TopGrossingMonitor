@@ -19,19 +19,16 @@
 @implementation TGFavAppTableViewController
 
 
-- (void)viewDidLoad
+- (void)loadData
 {
-    [super viewDidLoad];
-    
-    // load dataSource from Core Data
     [self fetchFavourites];
-    
 }
 
+// load dataSource from Core Data
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
-    
+
     // reload data only if favourites has updated
     if ([[FavDataManager sharedInstance] hasUpdated]){
         [self fetchFavourites];
@@ -64,7 +61,6 @@
     NSDictionary *data = [NSJSONSerialization JSONObjectWithData:rawJSONData options:NSJSONReadingMutableContainers error:&error];
     return data;
 }
-
 
 
 

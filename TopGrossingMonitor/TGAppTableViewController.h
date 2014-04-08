@@ -6,8 +6,8 @@
 //  Copyright (c) 2014 Enze Li. All rights reserved.
 //
 //  A generic class for displaying app items in tabelview
-//  Subclasses should override |viewDidLoad| for loading dataSource upon loading
-//                   and |dataAtIndexPath:| for providing formatted data points
+//  Subclasses should override |loadData| for loading dataSource
+//                 and |dataAtIndexPath:| for providing formatted data points
 //
 //  Data point format: JSON object of a single app as NSDictionary
 //

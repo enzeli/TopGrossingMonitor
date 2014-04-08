@@ -20,8 +20,13 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    [self loadData];
 }
 
+- (void)loadData
+{
+    // should be implemented by subclasses
+}
 
 #pragma mark - Table view data source
 
@@ -49,7 +54,7 @@
 {
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"AppCell" forIndexPath:indexPath];
     
-    // Configure the cell...
+    // Configure the cell
     NSDictionary *celldata = [self dataAtIndexPath:indexPath];
     
     cell.textLabel.text = celldata[@"im:name"][@"label"];
@@ -64,24 +69,29 @@
     }
     
     return cell;
-
 }
 
 
 #pragma mark - Navigation
+
+- (void) prepareDetailView:(TGAppViewController *)receiver atIndexPath:(NSIndexPath *)indexPath
+{
+    NSDictionary *celldata = [self dataAtIndexPath:indexPath];
+    if (celldata) {
+        receiver.data = celldata;
+    } else {
+        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Oops" message:@"Data not found. Refresh Table View" delegate:self cancelButtonTitle:@"Refresh" otherButtonTitles:nil];
+        [alertView show];
+    }
+}
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
     if ([segue.identifier isEqualToString:@"PushDetailSegue"]) {
         if ([segue.destinationViewController isKindOfClass:[TGAppViewController class]]){
             NSIndexPath *indexPath = [self.tableView indexPathForCell:sender];
             TGAppViewController *receiver = (TGAppViewController *)segue.destinationViewController;
-            NSDictionary *celldata = [self dataAtIndexPath:indexPath];
-            if (celldata) {
-                receiver.data = celldata;
-            } else {
-                UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Oops" message:@"Data not found. Refresh Table View" delegate:self cancelButtonTitle:@"Refresh" otherButtonTitles:nil];
-                [alertView show];
-            }
+            
+            [self prepareDetailView:receiver atIndexPath:indexPath];
             
             [self.tableView deselectRowAtIndexPath:indexPath animated:NO];
         }
@@ -99,7 +109,7 @@
             detailvc = [((UINavigationController *)detailvc).viewControllers firstObject];
             if ([detailvc isKindOfClass:[TGAppViewController class]]){
                 TGAppViewController *receiver = (TGAppViewController *)detailvc;
-                receiver.data = [self dataAtIndexPath:indexPath];
+                [self prepareDetailView:receiver atIndexPath:indexPath];
                 [receiver reloadView];
             }
 
@@ -110,6 +120,12 @@
 }
 
 # pragma mark - Alert View delegate
+-(void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    if ([[alertView buttonTitleAtIndex:buttonIndex] isEqualToString:@"Refresh"]) {
+        [self loadData];
+    }
+}
 
 
 @end
