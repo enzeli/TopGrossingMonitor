@@ -23,7 +23,7 @@
 		C3199A2F18EF1D6F001949B6 /* TopGrossingMonitorTests.m in Sources */ = {isa = PBXBuildFile; fileRef = C3199A2E18EF1D6F001949B6 /* TopGrossingMonitorTests.m */; };
 		C3199A3A18EF29B7001949B6 /* FavDataManager.m in Sources */ = {isa = PBXBuildFile; fileRef = C3199A3918EF29B7001949B6 /* FavDataManager.m */; };
 		C3199A3D18EF2A74001949B6 /* TGAppTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C3199A3C18EF2A74001949B6 /* TGAppTableViewController.m */; };
-		C37FECC118EF82A700FB7E6E /* TGAppViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C37FECC018EF82A700FB7E6E /* TGAppViewController.m */; };
+		C37FECC118EF82A700FB7E6E /* TGAppDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C37FECC018EF82A700FB7E6E /* TGAppDetailViewController.m */; };
 		C37FECC718EF848200FB7E6E /* Drawers.png in Resources */ = {isa = PBXBuildFile; fileRef = C37FECC318EF848200FB7E6E /* Drawers.png */; };
 		C37FECC818EF848200FB7E6E /* Drawers@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C37FECC418EF848200FB7E6E /* Drawers@2x.png */; };
 		C37FECC918EF848200FB7E6E /* Favorites.png in Resources */ = {isa = PBXBuildFile; fileRef = C37FECC518EF848200FB7E6E /* Favorites.png */; };
@@ -84,8 +84,8 @@
 		C3199A3918EF29B7001949B6 /* FavDataManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FavDataManager.m; sourceTree = "<group>"; };
 		C3199A3B18EF2A74001949B6 /* TGAppTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TGAppTableViewController.h; sourceTree = "<group>"; };
 		C3199A3C18EF2A74001949B6 /* TGAppTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TGAppTableViewController.m; sourceTree = "<group>"; };
-		C37FECBF18EF82A700FB7E6E /* TGAppViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TGAppViewController.h; sourceTree = "<group>"; };
-		C37FECC018EF82A700FB7E6E /* TGAppViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TGAppViewController.m; sourceTree = "<group>"; };
+		C37FECBF18EF82A700FB7E6E /* TGAppDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TGAppDetailViewController.h; sourceTree = "<group>"; };
+		C37FECC018EF82A700FB7E6E /* TGAppDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TGAppDetailViewController.m; sourceTree = "<group>"; };
 		C37FECC318EF848200FB7E6E /* Drawers.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Drawers.png; sourceTree = "<group>"; };
 		C37FECC418EF848200FB7E6E /* Drawers@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Drawers@2x.png"; sourceTree = "<group>"; };
 		C37FECC518EF848200FB7E6E /* Favorites.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Favorites.png; sourceTree = "<group>"; };
@@ -254,8 +254,8 @@
 				C3E88FB818F3B08300FC8BB0 /* TGRSSAppTableViewController.m */,
 				C3E88FBA18F3B37300FC8BB0 /* TGFavAppTableViewController.h */,
 				C3E88FBB18F3B37300FC8BB0 /* TGFavAppTableViewController.m */,
-				C37FECBF18EF82A700FB7E6E /* TGAppViewController.h */,
-				C37FECC018EF82A700FB7E6E /* TGAppViewController.m */,
+				C37FECBF18EF82A700FB7E6E /* TGAppDetailViewController.h */,
+				C37FECC018EF82A700FB7E6E /* TGAppDetailViewController.m */,
 			);
 			name = ViewControllers;
 			sourceTree = "<group>";
@@ -426,7 +426,7 @@
 				C3E88FE318F4488F00FC8BB0 /* SDWebImagePrefetcher.m in Sources */,
 				C3E88FE618F4488F00FC8BB0 /* UIImage+MultiFormat.m in Sources */,
 				C3199A3A18EF29B7001949B6 /* FavDataManager.m in Sources */,
-				C37FECC118EF82A700FB7E6E /* TGAppViewController.m in Sources */,
+				C37FECC118EF82A700FB7E6E /* TGAppDetailViewController.m in Sources */,
 				C3E88FE418F4488F00FC8BB0 /* UIButton+WebCache.m in Sources */,
 				C37FECD318EFC6C200FB7E6E /* Model.xcdatamodeld in Sources */,
 				C3E88FDD18F4488F00FC8BB0 /* SDImageCache.m in Sources */,

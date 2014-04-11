@@ -6,7 +6,7 @@
 //  Copyright (c) 2014 Enze Li. All rights reserved.
 //
 
-#import "TGAppViewController.h"
+#import "TGAppDetailViewController.h"
 #import "TGFavAppTableViewController.h"
 #import "FavDataManager.h"
 #import "App.h"
@@ -14,25 +14,26 @@
 @import CoreData;
 @import Social;
 
-@interface TGAppViewController ()
+@interface TGAppDetailViewController ()
 
 @property (assign) BOOL isFav;
 @property (strong, nonatomic) UIImageView *welcomeImageView;
+@property (strong, nonatomic) UIBarButtonItem *rightButton;
 
 @end
 
-@implementation TGAppViewController
+@implementation TGAppDetailViewController
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
     
     // Add fav button on Navigation bar
-    UIBarButtonItem *rightButton = [[UIBarButtonItem alloc] initWithTitle:@"Fav"
+    self.rightButton = [[UIBarButtonItem alloc] initWithTitle:@"Fav"
                                                                     style:UIBarButtonItemStyleDone
                                                                    target:self
                                                                    action:@selector(favButtonPressed:)];
-    self.navigationItem.rightBarButtonItem = rightButton;
+//    self.navigationItem.rightBarButtonItem = self.rightButton;
     
     // disable summary text view editing
     self.summaryView.editable = NO;
@@ -55,10 +56,12 @@
     if (self.data) {
         self.shareButton.hidden = NO;
         self.appStoreButton.hidden = NO;
+        self.navigationItem.rightBarButtonItem = self.rightButton;
         [self.welcomeImageView removeFromSuperview];
     } else {
         self.shareButton.hidden = YES;
         self.appStoreButton.hidden = YES;
+        self.navigationItem.rightBarButtonItem = nil;
         
         UIImage *welcomeImage = [UIImage imageNamed:@"Welcome.png"];
         self.welcomeImageView = [[UIImageView alloc]initWithImage:welcomeImage];

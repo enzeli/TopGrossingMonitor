@@ -20,10 +20,10 @@
             </objects>
             <point key="canvasLocation" x="736" y="-268"/>
         </scene>
-        <!--App View Controller - Detail-->
+        <!--App Detail View Controller - Detail-->
         <scene sceneID="LPR-xa-A22">
             <objects>
-                <viewController id="abJ-82-EmM" customClass="TGAppViewController" sceneMemberID="viewController">
+                <viewController id="abJ-82-EmM" customClass="TGAppDetailViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="zek-8h-2WJ"/>
                         <viewControllerLayoutGuide type="bottom" id="92V-wN-A10"/>

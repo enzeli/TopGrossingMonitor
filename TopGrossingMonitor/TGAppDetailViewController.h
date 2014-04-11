@@ -12,7 +12,7 @@
 #import <UIKit/UIKit.h>
 @import MessageUI;
 
-@interface TGAppViewController : UIViewController <UIActionSheetDelegate, MFMailComposeViewControllerDelegate, UISplitViewControllerDelegate>
+@interface TGAppDetailViewController : UIViewController <UIActionSheetDelegate, MFMailComposeViewControllerDelegate, UISplitViewControllerDelegate>
 
 @property (strong, nonatomic) NSDictionary *data;
 

@@ -7,10 +7,12 @@
 //
 
 #import "TGAppTableViewController.h"
-#import "TGAppViewController.h"
+#import "TGAppDetailViewController.h"
 #import "UIImageView+WebCache.h"
 
 @interface TGAppTableViewController ()
+
+@property (strong, nonatomic) UIRefreshControl *refreshControl;
 
 @end
 
@@ -21,6 +23,16 @@
 {
     [super viewDidLoad];
     [self loadData];
+    
+    self.refreshControl = [[UIRefreshControl alloc] init];
+    [self.refreshControl addTarget:self action:@selector(reloadData:) forControlEvents:UIControlEventValueChanged];
+    [self.tableView addSubview:self.refreshControl];
+}
+
+- (void)reloadData:(id)sender
+{
+    [self loadData];
+    [self.refreshControl endRefreshing];
 }
 
 - (void)loadData
@@ -74,7 +86,7 @@
 
 #pragma mark - Navigation
 
-- (void) prepareDetailView:(TGAppViewController *)receiver atIndexPath:(NSIndexPath *)indexPath
+- (void) prepareDetailView:(TGAppDetailViewController *)receiver atIndexPath:(NSIndexPath *)indexPath
 {
     NSDictionary *celldata = [self dataAtIndexPath:indexPath];
     if (celldata) {
@@ -87,9 +99,9 @@
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
     if ([segue.identifier isEqualToString:@"PushDetailSegue"]) {
-        if ([segue.destinationViewController isKindOfClass:[TGAppViewController class]]){
+        if ([segue.destinationViewController isKindOfClass:[TGAppDetailViewController class]]){
             NSIndexPath *indexPath = [self.tableView indexPathForCell:sender];
-            TGAppViewController *receiver = (TGAppViewController *)segue.destinationViewController;
+            TGAppDetailViewController *receiver = (TGAppDetailViewController *)segue.destinationViewController;
             
             [self prepareDetailView:receiver atIndexPath:indexPath];
             
@@ -107,8 +119,8 @@
         if ([detailvc isKindOfClass:[UINavigationController class]]) {
             
             detailvc = [((UINavigationController *)detailvc).viewControllers firstObject];
-            if ([detailvc isKindOfClass:[TGAppViewController class]]){
-                TGAppViewController *receiver = (TGAppViewController *)detailvc;
+            if ([detailvc isKindOfClass:[TGAppDetailViewController class]]){
+                TGAppDetailViewController *receiver = (TGAppDetailViewController *)detailvc;
                 [self prepareDetailView:receiver atIndexPath:indexPath];
                 [receiver reloadView];
             }

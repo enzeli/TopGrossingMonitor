@@ -77,10 +77,10 @@
             </objects>
             <point key="canvasLocation" x="1053" y="-334"/>
         </scene>
-        <!--App View Controller - Fav Detail-->
+        <!--App Detail View Controller - Fav Detail-->
         <scene sceneID="cT0-GS-jxj">
             <objects>
-                <viewController id="mrb-Ge-qTD" customClass="TGAppViewController" sceneMemberID="viewController">
+                <viewController id="mrb-Ge-qTD" customClass="TGAppDetailViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="okE-1z-mTb"/>
                         <viewControllerLayoutGuide type="bottom" id="URc-oR-DaG"/>
@@ -258,10 +258,10 @@
             </objects>
             <point key="canvasLocation" x="-602" y="-80"/>
         </scene>
-        <!--App View Controller - Detail-->
+        <!--App Detail View Controller - Detail-->
         <scene sceneID="Sm5-DO-inc">
             <objects>
-                <viewController id="1Jj-cd-Bng" customClass="TGAppViewController" sceneMemberID="viewController">
+                <viewController id="1Jj-cd-Bng" customClass="TGAppDetailViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="kVx-0a-aGk"/>
                         <viewControllerLayoutGuide type="bottom" id="8WY-SC-zX0"/>
