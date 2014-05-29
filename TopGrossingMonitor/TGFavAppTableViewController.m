@@ -48,9 +48,21 @@
     NSError *error;
     NSArray *results = [context executeFetchRequest:request error:&error];
     
-    self.dataSource = results;
+    if (!error) {
+        self.dataSource = results;
+        [self.tableView reloadData];
+    } else {
+        NSLog(@"Coredata request error: %@", error);
+        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Oops"
+                                                            message:@"Coredata error."
+                                                           delegate:nil
+                                                  cancelButtonTitle:@"OK"
+                                                  otherButtonTitles:nil];
+        [alertView show];
+        
+    }
     
-    [self.tableView reloadData];
+    
 }
 
 

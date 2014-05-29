@@ -73,7 +73,6 @@
     [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:YES];
     [self.activityIndicator startAnimating];
     [task resume];
-    
 }
 
 

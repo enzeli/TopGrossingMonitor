@@ -210,7 +210,7 @@
     
     if ([results count] >= 1) {
         if ([results count] > 1){
-            NSLog(@"Waring: found duplicate fav records");
+            NSLog(@"Warning: found duplicate fav records");
         }
         return YES;
     } else {

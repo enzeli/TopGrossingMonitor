@@ -26,9 +26,9 @@ NSString * const DataManagerDidSaveFailedNotification = @"DataManagerDidSaveFail
 @synthesize mainObjectContext = _mainObjectContext;
 @synthesize objectModel = _objectModel;
 
-NSString * const kDataManagerBundleName = @"GoPlacesPro";
+NSString * const kDataManagerBundleName = @"TGMonitor";
 NSString * const kDataManagerModelName = @"Model";
-NSString * const kDataManagerSQLiteName = @"GoPlacesPro.sqlite";
+NSString * const kDataManagerSQLiteName = @"TGMonitor.sqlite";
 
 + (FavDataManager*)sharedInstance {
 	static dispatch_once_t pred;
